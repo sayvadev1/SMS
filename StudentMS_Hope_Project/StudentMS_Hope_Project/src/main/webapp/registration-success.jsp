@@ -1,0 +1,2 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html><html><head><title>Registration Successful</title><link rel="stylesheet" href="css/style.css"></head><body class="public-page"><div class="success-card"><div class="success-icon">✓</div><h1>Registration Successful</h1><p>Your student registration has been submitted successfully.</p><div class="actions center"><a class="btn primary" href="register-student">Register Another</a><a class="btn secondary" href="admin-login">Admin Login</a></div></div></body></html>

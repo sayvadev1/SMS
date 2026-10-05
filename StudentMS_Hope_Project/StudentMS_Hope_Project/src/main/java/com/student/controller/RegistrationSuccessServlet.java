@@ -1,0 +1,1 @@
+package com.student.controller; import jakarta.servlet.*; import jakarta.servlet.http.*; import java.io.IOException; public class RegistrationSuccessServlet extends HttpServlet{protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException{req.getRequestDispatcher("/registration-success.jsp").forward(req,resp);}}

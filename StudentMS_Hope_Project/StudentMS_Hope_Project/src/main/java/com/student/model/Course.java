@@ -1,0 +1,2 @@
+package com.student.model;
+public class Course { private int courseId; private String courseName,status; public Course(){} public Course(int id,String name,String status){courseId=id;courseName=name;this.status=status;} public int getCourseId(){return courseId;} public void setCourseId(int v){courseId=v;} public String getCourseName(){return courseName;} public void setCourseName(String v){courseName=v;} public String getStatus(){return status;} public void setStatus(String v){status=v;} }

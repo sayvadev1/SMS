@@ -1,0 +1,9 @@
+package com.student.dao;
+import com.student.model.Student; import com.student.util.DBConnection; import java.sql.*; import java.util.*;
+public class StudentDAO {
+ public void save(Student s)throws SQLException{String q="INSERT INTO students(first_name,last_name,email,phone,gender,department,city,course_id,status) VALUES(?,?,?,?,?,?,?,?,?)";try(Connection c=DBConnection.getConnection();PreparedStatement p=c.prepareStatement(q)){p.setString(1,s.getFirstName());p.setString(2,s.getLastName());p.setString(3,s.getEmail());p.setString(4,s.getPhone());p.setString(5,s.getGender());p.setString(6,s.getDepartment());p.setString(7,s.getCity());p.setInt(8,s.getCourseId());p.setString(9,s.getStatus());p.executeUpdate();}}
+ public List<Student> findAll()throws SQLException{List<Student> l=new ArrayList<>();String q="SELECT student_id,first_name,last_name,email,phone,gender,department,city,course_id,status FROM students ORDER BY student_id DESC";try(Connection c=DBConnection.getConnection();PreparedStatement p=c.prepareStatement(q);ResultSet r=p.executeQuery()){while(r.next())l.add(map(r));}return l;}
+ private Student map(ResultSet r)throws SQLException{return new Student(r.getInt("student_id"),r.getString("first_name"),r.getString("last_name"),r.getString("email"),r.getString("phone"),r.getString("gender"),r.getString("department"),r.getString("city"),r.getInt("course_id"),r.getString("status"));}
+ public int countAll()throws SQLException{return count("SELECT COUNT(*) FROM students");} public int countActive()throws SQLException{return count("SELECT COUNT(*) FROM students WHERE status='ACTIVE'");} public int countInactive()throws SQLException{return count("SELECT COUNT(*) FROM students WHERE status='INACTIVE'");}
+ private int count(String q)throws SQLException{try(Connection c=DBConnection.getConnection();PreparedStatement p=c.prepareStatement(q);ResultSet r=p.executeQuery()){r.next();return r.getInt(1);}}
+}
